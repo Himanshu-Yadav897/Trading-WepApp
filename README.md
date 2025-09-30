@@ -4,6 +4,8 @@ A full-stack financial trading application built with the MERN stack, designed t
 
 This project was built as a part of the Full-Stack Developer assignment for EnxtAI. It demonstrates the ability to design secure APIs, manage application state, and create an intuitive user experience.
 
+Link :- https://trading-webapp.netlify.app/
+
 ---
 
 ### 🎥 Video Walkthrough
