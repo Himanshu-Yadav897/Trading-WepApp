@@ -10,7 +10,9 @@ const watchlistRoutes = require('./routes/watchlistRoutes');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://trading-webapp.netlify.app' 
+}));
 app.use(express.json());
 dotenv.config();
 
