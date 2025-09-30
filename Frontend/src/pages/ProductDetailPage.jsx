@@ -21,7 +21,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/products/${productId}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/${productId}`);
         setProduct(res.data);
       } catch (err) {
         setError('Failed to fetch product details.');
@@ -39,7 +39,7 @@ const ProductDetailPage = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5001/api/transactions/buy', { productId, units: Number(units) });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/transactions/buy`, { productId, units: Number(units) });
       toast.success('Purchase successful!');
       navigate('/dashboard'); 
     } catch (err) {
@@ -49,7 +49,7 @@ const ProductDetailPage = () => {
 
   const handleAddToWatchlist = async () => {
     try {
-      await axios.post('http://localhost:5001/api/watchlist', { productId });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/watchlist`, { productId });
       toast.success('Added to watchlist!');
     } catch (err) {
       toast.error(err.response.data.message || 'Failed to add to watchlist.');

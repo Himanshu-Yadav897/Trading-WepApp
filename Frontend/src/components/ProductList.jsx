@@ -1,5 +1,3 @@
-// src/components/ProductList.jsx
-
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
@@ -13,7 +11,7 @@ const ProductList = ({ products, refreshData }) => {
       return;
     }
     try {
-      await axios.post('http://localhost:5001/api/transactions/buy', { productId, units: Number(units) });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/transactions/buy`, { productId, units: Number(units) });
       toast.success('Purchase successful!');
       refreshData();
     } catch (err) {
@@ -23,7 +21,7 @@ const ProductList = ({ products, refreshData }) => {
 
   const handleAddToWatchlist = async (productId) => {
     try {
-      await axios.post('http://localhost:5001/api/watchlist', { productId });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/watchlist`, { productId });
       toast.success('Added to watchlist!');
       refreshData();
     } catch (err) {

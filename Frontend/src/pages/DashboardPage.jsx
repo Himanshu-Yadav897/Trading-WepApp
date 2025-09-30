@@ -1,5 +1,3 @@
-// src/pages/DashboardPage.jsx
-
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
@@ -18,9 +16,9 @@ const DashboardPage = () => {
   const fetchData = useCallback(async () => {
     try {
       const [productsRes, transactionsRes, watchlistRes] = await Promise.all([
-        axios.get("http://localhost:5001/api/products"),
-        axios.get("http://localhost:5001/api/transactions"),
-        axios.get("http://localhost:5001/api/watchlist"),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/products`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/transactions`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/watchlist`),
       ]);
       setProducts(productsRes.data);
       setTransactions(transactionsRes.data);
@@ -37,7 +35,7 @@ const DashboardPage = () => {
     fetchData();
   }, [fetchData]);
 
-  // --- Portfolio Calculations ---
+  //  Portfolio Calculations 
   const totalInvested = transactions.reduce(
     (acc, t) => acc + t.pricePerUnit * t.units,
     0

@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const refetchUser = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/users/profile');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/profile`);
       setUser(res.data);
     } catch (error) {
       console.error('Could not refetch user profile', error);

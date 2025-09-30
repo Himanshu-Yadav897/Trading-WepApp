@@ -1,5 +1,3 @@
-// src/components/Watchlist.jsx
-
 import React from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -9,7 +7,7 @@ const Watchlist = ({ watchlist, refreshData }) => {
   const handleRemove = async (productId) => {
     if (window.confirm('Are you sure you want to remove this?')) {
       try {
-        await axios.delete(`http://localhost:5001/api/watchlist/${productId}`);
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/watchlist/${productId}`);
         toast.success('Removed from watchlist.');
         refreshData();
       } catch (err) {
